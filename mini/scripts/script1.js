@@ -121,7 +121,7 @@ function showPosition(position) {
     }
     var xsum=LatLon.x+pieskx;
     var ysum=LatLon.y+piesky;
-    cords.innerHTML = 'Latitude: ' + lat + '\n Longitude: ' + lon + '\n x:' +xsum + '\n y:'+ysum;
+    cords.innerHTML = 'Latitude: ' + lat + '\n Longitude: ' + lon + '\n x:' +pieskx + '\n y:'+piesky;
 }
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
 var words = text.split(' ');
