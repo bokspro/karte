@@ -17,8 +17,8 @@ var westLong = 21.053654;
 var eastLong = 28.242923;
 var northLat = 58.085900;
 var southLat = 55.674427;
-var pieskx;
-var piesky;
+var pieskx=0;
+var piesky=0;
 var cords;
 var body = document.getElementById('body');
 var koeficients=100;
@@ -60,7 +60,7 @@ function startApp() {
             height=document.documentElement.clientHeight;
             lines.z=height;
             
-            if(localStorage.length){        
+            if(localStorage.length && pieskx!=0){        
                 for ( var i = 0, len = localStorage.length; i < len; ++i ) {
 
                     pos = ( JSON.parse(localStorage.getItem( localStorage.key( i ) ) ) );
@@ -100,25 +100,32 @@ function showPosition(position) {
     var lat=position.coords.latitude;
     LatLon.x = (width * ((lon-westLong)/(eastLong-westLong)))*koeficients; 
     LatLon.y = (height * ((northLat-lat)/(northLat-southLat)))*koeficients;
-    if(began==true){
+    
+        if(began==true){
 
-         //bauska
-        lines.x2 = LatLon.x; 
-        lines.y2 = LatLon.y;
-        localStorage.setItem(localStorage.length, JSON.stringify(lines));
+             //bauska
+            lines.x2 = LatLon.x; 
+            lines.y2 = LatLon.y;
+            localStorage.setItem(localStorage.length, JSON.stringify(lines));
+           if (pieskx!=0)
+    { 
         myAppArea.context.lineTo(LatLon.x+pieskx,LatLon.y+piesky);
-        myAppArea.context.stroke();
-        myAppArea.context.fillRect(LatLon.x+pieskx-5, LatLon.y+piesky-5, 10, 10);
-        myAppArea.context.beginPath();
-        myAppArea.context.moveTo(LatLon.x+pieskx,LatLon.y+piesky);
-        lines.x1 = LatLon.x; 
-        lines.y1 = LatLon.y;
-    }else{
-        myAppArea.context.moveTo(LatLon.x+pieskx,LatLon.y+piesky);
-        lines.x1 = LatLon.x; 
-        lines.y1 = LatLon.y;
-        began=true;
-    }
+            myAppArea.context.stroke();
+            myAppArea.context.fillRect(LatLon.x+pieskx-5, LatLon.y+piesky-5, 10, 10);
+            myAppArea.context.beginPath();
+            myAppArea.context.moveTo(LatLon.x+pieskx,LatLon.y+piesky);
+        }
+            lines.x1 = LatLon.x; 
+            lines.y1 = LatLon.y;
+        }else{
+            if (pieskx!=0)
+            {
+            myAppArea.context.moveTo(LatLon.x+pieskx,LatLon.y+piesky);
+        }
+            lines.x1 = LatLon.x; 
+            lines.y1 = LatLon.y;
+            began=true;
+        }
     var xsum=LatLon.x+pieskx;
     var ysum=LatLon.y+piesky;
     cords.innerHTML = 'Latitude: ' + lat + '\n Longitude: ' + lon + '\n x:' +pieskx + '\n y:'+piesky;
