@@ -98,7 +98,6 @@ function getLocation() {
 function showPosition(position) {
     var lon=position.coords.longitude;
     var lat=position.coords.latitude;
-    cords.innerHTML = 'Latitude: ' + lat + '\n Longitude: ' + lon;
     LatLon.x = (width * ((lon-westLong)/(eastLong-westLong)))*koeficients; 
     LatLon.y = (height * ((northLat-lat)/(northLat-southLat)))*koeficients;
     if(began==true){
@@ -120,6 +119,9 @@ function showPosition(position) {
         lines.y1 = LatLon.y;
         began=true;
     }
+    var xsum=LatLon.x+pieskx;
+    var ysum=LatLon.y+piesky;
+    cords.innerHTML = 'Latitude: ' + lat + '\n Longitude: ' + lon + '\n x:' +xsum + '\n y:'+ysum;
 }
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
 var words = text.split(' ');

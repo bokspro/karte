@@ -70,12 +70,12 @@ function startApp() {
                 imageWidth*2,
                 imageHeight*2
             );
+            width=imageWidth*2;
+            height=imageHeight*2;
             cords = document.createElement("h1");
             cords.appendChild(document.createTextNode('Latitude: ' + LatLon.y + ' Longitude: ' + LatLon.x));
             document.body.appendChild(cords);
 
-            width=imageWidth*2;
-            height=imageHeight*2;
             lines.z=height;
             // } else {
             //     background.onload = function(){
