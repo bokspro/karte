@@ -11,6 +11,8 @@ var lines = {
 };
 var width;
 var height;
+var cords;
+
 // X and Y boundaries
 var westLong = 20.967488;
 var eastLong = 28.242923;
@@ -68,6 +70,10 @@ function startApp() {
                 imageWidth*2,
                 imageHeight*2
             );
+            cords = document.createElement("h1");
+            cords.appendChild(document.createTextNode('Latitude: ' + LatLon.y + 'Longitude: ' + LatLon.x));
+            document.body.appendChild(cords);
+
             width=imageWidth*2;
             height=imageHeight*2;
             lines.z=height;
@@ -190,6 +196,7 @@ function getDistanceFromLatLon(lat1, lon1, lat2, lon2){  // generally used geo m
 
 
 function updateCanvas(){
+    cords.innerHTML = 'Latitude: ' + LatLon.y + 'Longitude: ' + LatLon.x;
      // talsi
         //localStorage.setItem("vardi", visi);
         /*
