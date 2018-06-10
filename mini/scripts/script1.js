@@ -19,6 +19,7 @@ var northLat = 58.085900;
 var southLat = 55.674427;
 var pieskx;
 var piesky;
+var cords;
 var body = document.getElementById('body');
 var koeficients=100;
 var began=false;
@@ -34,7 +35,7 @@ var myAppArea = {
         this.canvas.width = body.offsetWidth;
         this.context = this.canvas.getContext("2d");
         this.frameNo = 0;
-        this.interval = setInterval(updateCanvas, 100);
+        this.interval = setInterval(updateCanvas, 1000);
     },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -72,6 +73,9 @@ function startApp() {
             }
             myAppArea.context.beginPath();
             myAppArea.context.lineWidth=5;
+            cords = document.createElement("h1");
+            cords.appendChild(document.createTextNode('Latitude: ' + LatLon.y + ' Longitude: ' + LatLon.x));
+            document.body.appendChild(cords);
             getLocation();
             if (flag && LatLon.x!=0)
             {
@@ -79,6 +83,7 @@ function startApp() {
                 piesky=(height/2)-LatLon.y;
                 flag=false;
             }
+
 
     
 }
@@ -93,6 +98,7 @@ function getLocation() {
 function showPosition(position) {
     var lon=position.coords.longitude;
     var lat=position.coords.latitude;
+    cords.innerHTML = 'Latitude: ' + lat + '\n Longitude: ' + lon;
     LatLon.x = (width * ((lon-westLong)/(eastLong-westLong)))*koeficients; 
     LatLon.y = (height * ((northLat-lat)/(northLat-southLat)))*koeficients;
     if(began==true){

@@ -71,7 +71,7 @@ function startApp() {
                 imageHeight*2
             );
             cords = document.createElement("h1");
-            cords.appendChild(document.createTextNode('Latitude: ' + LatLon.y + 'Longitude: ' + LatLon.x));
+            cords.appendChild(document.createTextNode('Latitude: ' + LatLon.y + ' Longitude: ' + LatLon.x));
             document.body.appendChild(cords);
 
             width=imageWidth*2;
@@ -117,6 +117,9 @@ function getLocation() {
 function showPosition(position) {
     var lon=position.coords.longitude;
     var lat=position.coords.latitude;
+
+    cords.innerHTML = 'Latitude: ' + lat + ' Longitude: ' + lon;
+
     LatLon.x = width * ((lon-westLong)/(eastLong-westLong)); 
     LatLon.y = height * ((northLat-lat)/(northLat-southLat));
     if(began==true){
@@ -196,7 +199,6 @@ function getDistanceFromLatLon(lat1, lon1, lat2, lon2){  // generally used geo m
 
 
 function updateCanvas(){
-    cords.innerHTML = 'Latitude: ' + LatLon.y + 'Longitude: ' + LatLon.x;
      // talsi
         //localStorage.setItem("vardi", visi);
         /*

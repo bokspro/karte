@@ -6,7 +6,8 @@ var citys = [
 	{city: 'Jurmala', pops: 57385, lat: 56.947968, lon: 23.618976},
 	{city: 'Ventspils', pops: 40679, lat: 57.401730, lon: 21.576574},
 	{city: 'Rezekne', pops: 32630, lat: 56.484768, lon: 27.346534},
-	{city: 'Ogre', pops: 25894, lat: 56.803410, lon: 24.621935}
+	{city: 'Ogre', pops: 25894, lat: 56.803410, lon: 24.621935},
+	{city: 'Saldus', pops: 11686, lat: 56.689115, lon: 22.495258}
 ];
 
 function getPos(lon,lat){
@@ -18,7 +19,7 @@ function loadCitys(){
 		getPos(citys[i].lon,citys[i].lat);
 		myAppArea.context.fillStyle = 'green';
         myAppArea.context.beginPath();
-        myAppArea.context.arc(LatLon.x,LatLon.y,Math.sqrt((citys[i].pops/1000000)*3000),0,2*Math.PI);
+        myAppArea.context.arc(LatLon.x,LatLon.y,Math.sqrt((citys[i].pops/citys[0].pops)*2000),0,2*Math.PI);
         myAppArea.context.strokeStyle='yellow';
         if(this.alpha==true){
             myAppArea.context.strokeStyle="blue";
