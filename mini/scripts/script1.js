@@ -42,16 +42,16 @@ var myAppArea = {
     }
 }
 function startApp() {
-    localStorage.clear();
+    //localStorage.clear();
     width = 4095;
     height = 2477;
     myAppArea.start();
 
         
            
-            console.log('width');
+            //console.log('width');
            
-            console.log('height');
+           // console.log('height');
         
 
 
@@ -77,12 +77,7 @@ function startApp() {
             cords.appendChild(document.createTextNode('Latitude: ' + LatLon.y + ' Longitude: ' + LatLon.x));
             document.body.appendChild(cords);
             getLocation();
-            if (flag && LatLon.x!=0)
-            {
-                pieskx=(width/2)-LatLon.x;
-                piesky=(height/2)-LatLon.y;
-                flag=false;
-            }
+            
 
 
     
@@ -187,35 +182,13 @@ function getDistanceFromLatLon(lat1, lon1, lat2, lon2){  // generally used geo m
 
 
 function updateCanvas(){
-     // talsi
-        //localStorage.setItem("vardi", visi);
-        /*
-            for (var key in localStorage){
-                console.log(key)
-            }
-            JSON.stringify(users);
-            JSON.parse(localStorage['users']);
-            https://www.youtube.com/watch?v=RbfG7NLKDgQ
-        */
-       /* localStorage.clear();
-
-    lines.x1 = width * ((22.531332-westLong)/(eastLong-westLong)); 
-    lines.y1 = height * ((northLat-57.320654)/(northLat-southLat));
-     //bauska
-    lines.x2 = width * ((24.861906-westLong)/(eastLong-westLong)); 
-    lines.y2 = height * ((northLat-56.539413)/(northLat-southLat));
-    localStorage.setItem(localStorage.length, JSON.stringify(lines));
-    for ( var i = 0, len = localStorage.length; i < len; ++i ) {
-        console.log( JSON.parse(localStorage.getItem( localStorage.key( i ) ) ) );
-    }*/
+     
     getLocation();
-    //console.log('x: '+ LatLon.x + ' y: ' +LatLon.y);
-
-
-
-   
-   // getLocation();
-    //console.log('x: '+ LatLon.x + ' y: ' +LatLon.y);
-    //myAppArea.context.fillStyle = "#FF0000";
-    //myAppArea.context.fillRect(LatLon.x-10,LatLon.y-10,20,20);
+    if (flag && LatLon.x!=0)
+            {
+                pieskx=(width/2)-LatLon.x;
+                piesky=(height/2)-LatLon.y;
+                flag=false;
+            }
+    
 }
