@@ -19,7 +19,7 @@ function loadCitys(){
 		getPos(citys[i].lon,citys[i].lat);
 		myAppArea.context.fillStyle = 'green';
         myAppArea.context.beginPath();
-        myAppArea.context.arc(LatLon.x,LatLon.y,Math.sqrt((citys[i].pops/citys[0].pops)*4000/Math.PI),0,2*Math.PI);
+        myAppArea.context.arc(LatLon.x+parvX,LatLon.y+parvY,(width/2)*Math.sqrt((citys[i].pops/citys[0].pops)*4000/Math.PI)/372,0,2*Math.PI);
         myAppArea.context.strokeStyle='yellow';
         if(this.alpha==true){
             myAppArea.context.strokeStyle="blue";

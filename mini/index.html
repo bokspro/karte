@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Koeficients</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="viss"><input id="number" type="number"><button id="poga" onclick="submit()">Tālāk</button></div>
+  <img src="gradient.jpg" class="btn" id="bg" alt="">
+  <script>
+    function submit()
+    {
+      var tgt=document.getElementById("number").value;
+      console.log(typeof tgt);
+      if (isNaN(tgt)) 
+        {
+          alert("Must input numbers");
+        }
+      else
+      {
+        localStorage.setItem('koef', tgt);
+        window.location.href = 'app/';
+    }
+    }
+    
+  </script>
+</body>
+</html>
