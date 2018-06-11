@@ -17,23 +17,40 @@ body {
 {	
 	 width: 200px;
         height: 600px;
-        position:fixed; /*it can be fixed too*/
-        left:0; right:0;
-        top:0; bottom:0;
-        margin:auto;
-
-        /*this to solve "the content will not be cut when the window is smaller than the content": */
-        max-width:100%;
-        max-height:100%;
-        overflow:auto;
+        
+        margin:100px auto 0px auto;
 }
 #poga
 {
-	margin-left:16%;
-	width:100px;
-	height:50px;
+	width:100%;
+	padding-left:0px;
+	padding-right:0px;
+	margin-top:10px;
+	font-size:25px;
+	background-color:#9933ff;
+	border-color:#cc00ff;
+	color:white;
 }
 #number
 {
-	height:20px;
+	width:calc(100% - 4px);
+	padding-left:0px;
+	padding-right:0px;
+	font-size:25px;
+}
+p
+{
+	text-align:center;
+	color:white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight:bold;
+}
+#virsraksts
+{
+	font-size:40px;
+}
+#spiegs
+{
+	width:100%;
+	height:auto;
 }

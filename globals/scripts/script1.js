@@ -21,6 +21,7 @@ var cords;
 
 var parvX = 0;
 var parvY = 0;
+var speed = 0.0;
 
 var distanceTraveled = 0;
 // X and Y boundaries
@@ -46,7 +47,7 @@ var myAppArea = {
         this.canvas.width = body.offsetWidth*2;
         this.context = this.canvas.getContext("2d");
         this.frameNo = 0;
-        this.interval = setInterval(updateCanvas, 10000);
+        this.interval = setInterval(updateCanvas, 5000);
     },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -85,7 +86,7 @@ function startApp() {
             width=imageWidth*2;
             height=imageHeight*2;
             cords = document.createElement("h1");
-            cords.appendChild(document.createTextNode('Latitude: ' + LatLon.y + ' Longitude: ' + LatLon.x + ' Distance traveled: ' + distanceTraveled + ' km' + ' Speed: ' + 0 + ' km/h'));
+            cords.appendChild(document.createTextNode('Latitude: ' + LatLon.y + ' Longitude: ' + LatLon.x + ' Distance traveled: ' + distanceTraveled + ' km' + ' Speed: ' + speed + ' km/h'));
             document.body.appendChild(cords);
 
             lines.z=height;
@@ -142,12 +143,12 @@ function showPosition(position) {
         disCords.lon2=lon;
         localStorage.setItem(localStorage.length, JSON.stringify(lines));
         
-        var speed = getDistanceFromLatLon(
+        speed = Math.round((getDistanceFromLatLon(
             disCords.lat1,
             disCords.lon1,
             disCords.lat2,
             disCords.lon2
-        );
+        ))*1000.0)/1000.0;
 
         myAppArea.context.lineTo(LatLon.x+parvX,LatLon.y+parvY);
         myAppArea.context.stroke();
@@ -166,7 +167,7 @@ function showPosition(position) {
         disCords.lon1=lon;
         began=true;
     }
-    cords.innerHTML = 'Latitude: ' + lat + ' Longitude: ' + lon + ' Distance traveled: ' + distanceTraveled + ' km';
+    cords.innerHTML = 'Latitude: ' + lat + ' Longitude: ' + lon + ' Distance traveled: ' + distanceTraveled + ' km' + ' Speed: ' + (speed/10)*3600 + ' km/h';
 }
 function wrapText(context, text, x, y, maxWidth, lineHeight) {
 var words = text.split(' ');
@@ -219,7 +220,8 @@ function getDistanceFromLatLon(lat1, lon1, lat2, lon2){  // generally used geo m
     Math.sin(dLon/2) * Math.sin(dLon/2);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     var d = R * c;
-    return distanceTraveled += Math.round((d)*1000.0)/1000.0; // kilometers
+    return d=Math.round((d)*1000.0)/1000.0
+    distanceTraveled += d; // kilometers
 }
 
 
