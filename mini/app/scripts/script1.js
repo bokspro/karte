@@ -98,6 +98,7 @@ function getLocation() {
 function showPosition(position) {
     var lon=position.coords.longitude;
     var lat=position.coords.latitude;
+    
     LatLon.x = (width * ((lon-westLong)/(eastLong-westLong)))*koeficients; 
     LatLon.y = (height * ((northLat-lat)/(northLat-southLat)))*koeficients;
     

@@ -104,7 +104,7 @@ function startApp() {
             //localStorage.clear();
             //updateCanvas();
             myAppArea.context.lineWidth=4;
-            myAppArea.context.strokeStyle = '#ff4400';
+            myAppArea.context.strokeStyle = 'white';
             if(localStorage.length){        
                 for ( var i = 0, len = localStorage.length; i < len; ++i ) {
 
@@ -116,7 +116,7 @@ function startApp() {
                 }
             }
             loadCitys();
-            myAppArea.context.strokeStyle="#FF0000";
+            myAppArea.context.strokeStyle="white";
             myAppArea.context.beginPath();
             getLocation();
     }
@@ -191,6 +191,7 @@ context.fillText(line, x, y);
 
 function showError(error) {
     myAppArea.context.font = "30px Arial";
+    myAppArea.context.fillStyle = 'black';
     switch(error.code) {
         case error.PERMISSION_DENIED:
             wrapText(myAppArea.context,"User denied the request for Geolocation.",width/2-100,height/2-15,width,300);

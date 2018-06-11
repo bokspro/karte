@@ -27,6 +27,6 @@ function loadCitys(){
         myAppArea.context.stroke();
         myAppArea.context.fill();
 	}
-	myAppArea.context.strokeStyle = 'red';
+	myAppArea.context.strokeStyle = 'white';
 	myAppArea.context.lineWidth=5;
 }
