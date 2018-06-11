@@ -35,7 +35,7 @@ var myAppArea = {
         this.canvas.width = body.offsetWidth;
         this.context = this.canvas.getContext("2d");
         this.frameNo = 0;
-        this.interval = setInterval(updateCanvas, 1000);
+        this.interval = setInterval(updateCanvas, 2000);
     },
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -193,7 +193,7 @@ function updateCanvas(){
                 pieskx=(width/2)-LatLon.x;
                 piesky=(height/2)-LatLon.y;
                 flag=false;
-                
+
                     myAppArea.context.fillRect(LatLon.x+pieskx-5, LatLon.y+piesky-5, 10, 10);
             }
     
