@@ -111,7 +111,6 @@ function showPosition(position) {
     { 
         myAppArea.context.lineTo(LatLon.x+pieskx,LatLon.y+piesky);
             myAppArea.context.stroke();
-            myAppArea.context.fillRect(LatLon.x+pieskx-5, LatLon.y+piesky-5, 10, 10);
             myAppArea.context.beginPath();
             myAppArea.context.moveTo(LatLon.x+pieskx,LatLon.y+piesky);
         }
@@ -194,6 +193,8 @@ function updateCanvas(){
                 pieskx=(width/2)-LatLon.x;
                 piesky=(height/2)-LatLon.y;
                 flag=false;
+                
+                    myAppArea.context.fillRect(LatLon.x+pieskx-5, LatLon.y+piesky-5, 10, 10);
             }
     
 }
